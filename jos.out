@@ -1,0 +1,127 @@
+6828 decimal is 15254 octal!
+
+npages_basemem is [640]KB: [160]pages
+npages_extmem is [65532]KB: [16383]pages
+npages(total pages of PM) is [16639]
+
+Physical memory: 66556K:[64MB] available
+base = 640K[0xa0000], extended = 65532K[0x3fff000]
+
+end[] is VA [0xf0218004]: PA is [0x218004]
+
+Initialize page directory at VA[kern_pgdir: 0xf0219000]
+
+UVPT = [0xef400000];
+PDX(UVPT) = [957: 0x3bd];
+kern_pgdir[PDX(UVPY)]=[0x219005] with perm = [0x5]
+
+sizeof(struct Page): [8]; npages: [16639]
+Pages allocated at address: [0xf021a000]
+
+sizeof(struct ENV): [124]; NENV: [1024]
+envs allocated at address: [0xf023b000]
+
+pages[0][0xf021a000]:Real-mode IDT and BIOS area
+
+free pages start at addr[0xf021a008]:pages[1]
+free pages end at addr[0xf021a030]:pages[6]
+
+pages[7][0xf021a038]->pages[159][0xf021a4f8]: Remaped IO
+
+pages[160][0xf021a500]->pages[255][0xf021a7f8]: IO hole [IOPHYSMEM, EXTPHYSMEM)
+
+pages[256][0xf021a800]->pages[601][0xf021b2c8]: Store some struct & arrays
+
+free pages start at pages[602][0xf021b2d0]
+free pages end at pages[16638][0xf023a7f0]
+
+The last free page [0xf023a7f0]
+check_page_free_list(1) succeeded!!!!!
+check_page_alloc() succeeded!
+check_page() succeeded!
+
+map 'pages' at linear address UPAGES[0xef000000]
+VA: [0xef000000]; PA: [0x21a000]
+
+map 'envs' at linear address UENVS[0xeec00000]
+VA: [0xeec00000]; PA: [0x23b000]
+
+map 'bootstack' at KSTKSIZE PA[0x8000]
+VA: [0xefbf8000]; PA: [0x118000]
+
+Map all of physical memory at KERNBASE
+VA: [0xf0000000]; PA: [0x0]
+VA: [0xfe000000]; PA: [0xfe000000]
+
+i[0]: kstacktop_i[0xefbf8000],percpu_kstacks[0]:[0xf01d8000]
+VA: [0xefbf8000]; PA: [0x1d8000]
+
+i[1]: kstacktop_i[0xefbe8000],percpu_kstacks[1]:[0xf01e0000]
+VA: [0xefbe8000]; PA: [0x1e0000]
+
+i[2]: kstacktop_i[0xefbd8000],percpu_kstacks[2]:[0xf01e8000]
+VA: [0xefbd8000]; PA: [0x1e8000]
+
+i[3]: kstacktop_i[0xefbc8000],percpu_kstacks[3]:[0xf01f0000]
+VA: [0xefbc8000]; PA: [0x1f0000]
+
+i[4]: kstacktop_i[0xefbb8000],percpu_kstacks[4]:[0xf01f8000]
+VA: [0xefbb8000]; PA: [0x1f8000]
+
+i[5]: kstacktop_i[0xefba8000],percpu_kstacks[5]:[0xf0200000]
+VA: [0xefba8000]; PA: [0x200000]
+
+i[6]: kstacktop_i[0xefb98000],percpu_kstacks[6]:[0xf0208000]
+VA: [0xefb98000]; PA: [0x208000]
+
+i[7]: kstacktop_i[0xefb88000],percpu_kstacks[7]:[0xf0210000]
+VA: [0xefb88000]; PA: [0x210000]
+check_kern_pgdir() succeeded!
+check_page_free_list(0) succeeded!!!!!
+check_page_installed_pgdir() succeeded!
+thiscpu id[0]; stack[0xefc00000]; ss[0x10]
+SMP: CPU 0 found 1 CPU(s)
+enabled interrupts: 1 2
+FS is running
+TRAP frame at 0xf023b3e0 from CPU 0
+  edi  0x00000000
+  esi  0x00000000
+  ebp  0xeebfdfd0
+  oesp 0xefbfffdc
+  ebx  0x00000000
+  edx  0x00008a00
+  ecx  0x0000000e
+  eax  0xffff8a00
+  es   0x----0023
+  ds   0x----0023
+  trap 0x0000000d General Protection
+  err  0x00000000
+  eip  0x0080111e
+  cs   0x----001b
+  flag 0x00000292
+  esp  0xeebfdfb8
+  ss   0x----0023
+icode startup
+icode: open /motd
+[00001009] user panic in icode at lib/file.c:72: open not implemented
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+TRAP frame at 0xf023b45c from CPU 0
+  edi  0x00000000
+  esi  0x008023c0
+  ebp  0xeebfdd70
+  oesp 0xefbfffdc
+  ebx  0xeebfdd84
+  edx  0xeebfdc18
+  ecx  0x00000001
+  eax  0x00000001
+  es   0x----0023
+  ds   0x----0023
+  trap 0x00000003 Breakpoint
+  err  0x00000000
+  eip  0x0080021c
+  cs   0x----001b
+  flag 0x00000296
+  esp  0xeebfdd48
+  ss   0x----0023
+K> 
